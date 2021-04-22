@@ -7,7 +7,7 @@ import {
   Linking,
   Modal,
 } from 'react-native';
-import { CookingTime,DailyRegimen,Slider } from '../'
+import { CookingTime,DailyRegimen,Slider,Cuisine } from '../'
 const Filter = ({ setModalFilter }) => {
   return (
     <View style={styles.centeredView}>
@@ -66,9 +66,17 @@ const Filter = ({ setModalFilter }) => {
           </View>
           <DailyRegimen/>
           </View>
+          <View style={{flex:1}}>
+
           <Slider/>
           </View>
+          <View style={{width:'90%',bottom:20,height:'20%'}}>
+          <Text>Cuisine</Text>
+            <Cuisine/>
+          </View>
+          </View>
 
+        
         </View>
       </View>
     </View>
@@ -82,6 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
 
@@ -90,6 +99,7 @@ const styles = StyleSheet.create({
     height: '80%',
     backgroundColor: 'white',
     alignItems: 'center',
+    justifyContent:'center',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     shadowRadius: 4,
@@ -137,7 +147,15 @@ const styles = StyleSheet.create({
     flex:1,
   },
   cookingArea:{
-    marginTop:'10%',
+    marginTop:'5%',
+    height:'20%',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'90%'
+
+  },
+  cuisineArea:{
+    marginTop:'5%',
     height:'20%',
     justifyContent:'center',
     alignItems:'center',
@@ -152,7 +170,8 @@ const styles = StyleSheet.create({
   },
   text:{
     fontWeight:'bold',
-    fontSize:17
+    fontSize:17,
+    marginBottom:10
   },
   rightText:{
     color:'grey',

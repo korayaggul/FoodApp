@@ -15,20 +15,18 @@ export default class favorite extends Component {
   
   
   render () {
-    const component1 = () => <Text>Breakfast</Text>
-    const component2 = () => <Text>Lunch</Text>
-    const component3 = () => <Text>Snack</Text>
-    const component4 = () => <Text>Dinner</Text>
-    const buttons = [{ element: component1 }, { element: component2 }, { element: component3 },{element:component4}]
+   
     const { selectedIndex } = this.state
     return (
       <ButtonGroup
         onPress={this.updateIndex}
         selectedIndex={selectedIndex}
-        buttons={buttons}
+        buttons={['Breakfast','Lunch','Snack','Dinner']}
         containerStyle={{height:50,width:'100%',justifyContent:'center',alignItems:'center',backgroundColor:'transparent',borderWidth:0,margin:30}} 
         buttonStyle={{width:80,backgroundColor:'white',borderRadius:15,elevation:5,marginBottom:10,}}
         innerBorderStyle={{width: 0}}
+        textStyle={{color:'black'}}
+        selectedTextStyle={styles.selectedText}
         selectedButtonStyle={styles.selectedButton}
         
         />
@@ -43,8 +41,8 @@ const styles = StyleSheet.create({
       
       
   },
-  containerStyle: {
-
+  selectedText: {
+  color:'white',
 
   },
   buttonStyle: {
