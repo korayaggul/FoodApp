@@ -1,7 +1,9 @@
-import React from 'react';
+import React , {useState}from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {DetailHeader} from '../components';
+import { Serving,CalorieBar,OilBar} from '../components/detail';
 const Detail = ({navigation,route}) => {
+  const[ count,setCount]=useState(1);
   const title = route?.params?.title || null;
   return (
     <View style={styles.main}>
@@ -20,7 +22,9 @@ const Detail = ({navigation,route}) => {
 
     </View>
     <View style={styles.bottomArea}>
-
+     <Serving setCount={setCount} count={count}/>
+     <CalorieBar count={count}/>
+     <OilBar count={count} />
     </View>
     </View>
   );
@@ -36,7 +40,6 @@ const styles = StyleSheet.create({
   },
   bottomArea:{
     flex:2,
-    backgroundColor:'blue'
   },
   titleText:{
     marginLeft:20,
