@@ -25,7 +25,7 @@ const Router = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <NavigationContainer ref={navigationRef} >
-        <Tab.Navigator tabBarOptions={{activeTintColor: 'green',inactiveTintColor:'#B9BDC7'}}>
+        <Tab.Navigator tabBarOptions={{activeTintColor: '#2dc268',inactiveTintColor:'#B9BDC7'}}>
           <Tab.Screen name="StackScreen" component={StackScreen} options={{tabBarLabel:'Recipes'}}/>
           <Tab.Screen name="Favorite" component={Favorite} options={{tabBarLabel:'Favorite'}}/>
         </Tab.Navigator>

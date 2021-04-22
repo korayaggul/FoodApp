@@ -7,7 +7,7 @@ import {
   Linking,
   Modal,
 } from 'react-native';
-import { ButtonGroup } from '../'
+import { CookingTime,DailyRegimen,Slider } from '../'
 const Filter = ({ setModalFilter }) => {
   return (
     <View style={styles.centeredView}>
@@ -26,22 +26,47 @@ const Filter = ({ setModalFilter }) => {
             <View style={styles.titleRight}>
 
               <TouchableOpacity>
-                <Text style={([styles.modalTitle])}>
+                <Text style={([styles.resetText])}>
                   Reset
           </Text>
 
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setModalFilter(false)}>
-                <Text style={([styles.modalTitle])}>
-                  Go
+                <Text style={([styles.goText])}>
+                  Go!
           </Text>
 
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ flex: 1, backgroundColor: 'green' }}>
+          <View style={{ flex: 1,alignItems:'center' }}>
+        
+          <View style={styles.cookingArea}>
+          <View style={{flex:1,flexDirection:'row'}}>     
+          <View style={{flex:1,flexDirection:'row',alignItems:'flex-end'}}>
 
-            <ButtonGroup />
+            <Text style={styles.text}>Cooking Time</Text>
+          </View>
+          <View style={{flex:1,flexDirection:'row',alignItems:'flex-end',justifyContent:'flex-end'}}>
+
+            <Text style={styles.rightText}>min</Text>
+          </View>
+          </View>
+          <CookingTime/>
+          </View>
+ 
+ 
+          <View style={styles.cookingAreaa}>
+          <View style={{flex:1,flexDirection:'row'}}>     
+          <View style={{flex:1,flexDirection:'row',alignItems:'flex-end'}}>
+
+            <Text style={styles.text}>Daily Regimen</Text>
+          </View>
+       
+          </View>
+          <DailyRegimen/>
+          </View>
+          <Slider/>
           </View>
 
         </View>
@@ -78,6 +103,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#ededed',
     flexDirection: 'row'
   },
+  modalTitle:{
+    marginLeft:20,
+    fontSize:25,
+    color:'#474747',
+    fontWeight:'bold'
+  },
+  resetText:{
+    marginLeft:20,
+    fontSize:15,
+    color:'#bcbcbc',
+    fontWeight:'bold'
+  },
+  goText:{
+    marginLeft:20,
+    fontSize:25,
+    color:'#2dc268',
+    fontWeight:'bold'
+  },
   titleLeft: {
     flex: 1,
     justifyContent: 'center',
@@ -85,11 +128,35 @@ const styles = StyleSheet.create({
   },
   titleRight: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    flexDirection: 'row'
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginRight:20
   },
   container:{
     flex:1,
+  },
+  cookingArea:{
+    marginTop:'10%',
+    height:'20%',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'90%'
+  },
+  cookingAreaa:{
+    marginTop:'5%',
+    height:'20%',
+    justifyContent:'center',
+    alignItems:'center',
+    width:'90%'
+  },
+  text:{
+    fontWeight:'bold',
+    fontSize:17
+  },
+  rightText:{
+    color:'grey',
+    fontSize:12,
+    fontWeight:'bold'
   }
 });

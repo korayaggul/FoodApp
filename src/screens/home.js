@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Text, View, StyleSheet,TouchableOpacity,Modal } from 'react-native';
 import { Carousel, SearchBar, FlatList } from '../components'
 import {Filter} from '../components/modal';
@@ -6,6 +6,7 @@ import {Filter} from '../components/modal';
 import Icon from 'react-native-vector-icons/Feather';
 
 const Home = ({ navigation }) => {
+    
     const [modalFilter, setModalFilter] = useState(false);
     const FilterIcon = <Icon name="sliders" size={20} color="white"/>;
     return (
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
         borderRadius:16,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#00d611',
+        backgroundColor:'#2dc268',
 
     },
     modalText: {
