@@ -1,29 +1,38 @@
 import * as React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaView, View, Text, ActivityIndicator} from 'react-native';
-import {Home} from '../screens'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaView, View, Text, ActivityIndicator } from 'react-native';
+import { Home, DetailScreen,Favorite } from '../screens'
+import {Carousel} from '../components'
+import {navigationRef} from '../../navigation/rootNavigation';
 
-function SettingsScreen() {
+const Stack = createStackNavigator();
+
+const StackScreen = () => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
+    <Stack.Navigator initialRouteName="Home" headerMode="none">
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="DetailScreen" component={DetailScreen} />
+
+    </Stack.Navigator>
   );
 }
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+const Router = () => {
   return (
-    <SafeAreaView style={{flex:1}}>
-        <NavigationContainer >
-
-      <Tab.Navigator >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer ref={navigationRef} >
+        <Tab.Navigator tabBarOptions={{activeTintColor: 'green',inactiveTintColor:'#B9BDC7'}}>
+          <Tab.Screen name="StackScreen" component={StackScreen} options={{tabBarLabel:'Recipes'}}/>
+          <Tab.Screen name="Favorite" component={Favorite} options={{tabBarLabel:'Favorite'}}/>
+        </Tab.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
+export default Router;
+
+

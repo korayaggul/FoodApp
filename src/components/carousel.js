@@ -2,8 +2,10 @@ import * as React from 'react';
 import {
   Text, 
   View,
-  SafeAreaView } from 'react-native';
-
+  SafeAreaView ,
+  TouchableOpacity
+} from 'react-native';
+import {navigate} from '../../navigation/rootNavigation';
 import Carousel from 'react-native-snap-carousel';
 
 export default class App extends React.Component {
@@ -18,19 +20,19 @@ export default class App extends React.Component {
               title:"Toast with Salmon and Eggs",
           },
           {
-            title:"Toast with Salmon and Eggs",
+            title:"Beef Burger",
 
           },
           {
-            title:"Toast with Salmon and Eggs",
+            title:"Taze Sogan Ekmek",
 
           },
           {
-            title:"Toast with Salmon and Eggs",
+            title:"Turşu Suyu",
 
           },
           {
-            title:"Toast with Salmon and Eggs",
+            title:"Leblebi",
 
           },
         ]
@@ -39,6 +41,9 @@ export default class App extends React.Component {
 
     _renderItem({item,index}){
         return (
+          <TouchableOpacity onPress={()=> navigate('DetailScreen',{
+            title:item.title,
+          })}>
           <View style={{
               backgroundColor:'green',
               borderRadius: 10,
@@ -50,6 +55,7 @@ export default class App extends React.Component {
             <Text style={{fontSize: 30,}}>{item.title}</Text>
             <Text>{item.text}</Text>
           </View>
+          </TouchableOpacity>
 
         )
     }

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity,TextInput } from 'react-native';
+import  Icon  from 'react-native-vector-icons/FontAwesome';
 
 const SearchBar = ({ navigation }) => {
     return (
         <View style={styles.searchBarArea}>
         <View style={styles.searchBar}> 
-         <View style={styles.icon}/>
+        <View style={styles.icon}>
+
+         <Icon name="search" size={20} color="lightgreen"/>
+        </View>
         <TextInput
             
             placeholder="Search recipes..."
@@ -34,8 +38,9 @@ const styles = StyleSheet.create({
     icon:{
         width:30,
         height:30,
-        backgroundColor:'grey',
         margin:10,
-        borderRadius:15
+        borderRadius:15,
+        justifyContent:'center',
+        alignItems:'center'
     }
 });
