@@ -7,7 +7,7 @@ const Detail = ({navigation}) => {
     <View style={styles.area}>
     <TouchableOpacity onPress={()=> navigate('Home')}>
 
-      <Icon name="chevron-left" size={20}/>
+      <Icon name="chevron-left" size={20} color="white"/>
     </TouchableOpacity>
     </View>
   );

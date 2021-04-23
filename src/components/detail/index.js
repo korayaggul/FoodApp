@@ -1,5 +1,7 @@
 import Serving from './serving';
-import CalorieBar from './calorieBar';
-import OilBar from './oilBar';
+import TextComp from './text';
+import CookingTime from './cookingTime';
+import ProgressBar from './progressBar';
+import MultiSelect from './mutliSelect';
 
-export {Serving,CalorieBar,OilBar}
+export {Serving,TextComp,CookingTime,ProgressBar,MultiSelect}

@@ -11,7 +11,7 @@ import { CookingTime,DailyRegimen,Slider,Cuisine } from '../'
 const Filter = ({ setModalFilter }) => {
   return (
     <View style={styles.centeredView}>
-      <View style={[styles.modalView]}>
+      <View style={styles.modalView}>
 
         <View style={styles.container}> 
 
@@ -39,15 +39,13 @@ const Filter = ({ setModalFilter }) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ flex: 1,alignItems:'center' }}>
+          <View style={{ flex: 1,alignItems:'center',marginLeft:'4%',marginRight:'4%'}}>
         
           <View style={styles.cookingArea}>
           <View style={{flex:1,flexDirection:'row'}}>     
-          <View style={{flex:1,flexDirection:'row',alignItems:'flex-end'}}>
+          <View style={{flex:1,flexDirection:'row',alignItems:'flex-end',justifyContent:'space-between'}}>
 
             <Text style={styles.text}>Cooking Time</Text>
-          </View>
-          <View style={{flex:1,flexDirection:'row',alignItems:'flex-end',justifyContent:'flex-end'}}>
 
             <Text style={styles.rightText}>min</Text>
           </View>
@@ -70,8 +68,8 @@ const Filter = ({ setModalFilter }) => {
 
           <Slider/>
           </View>
-          <View style={{width:'90%',bottom:20,height:'20%'}}>
-          <Text>Cuisine</Text>
+          <View style={{width:'100%',bottom:20,height:'20%'}}>
+          <Text style={styles.cuisineText}>Cuisine</Text>
             <Cuisine/>
           </View>
           </View>
@@ -89,8 +87,6 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center',
-    
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
 
@@ -98,8 +94,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '80%',
     backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent:'center',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     shadowRadius: 4,
@@ -111,7 +105,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#ededed',
-    flexDirection: 'row'
+    flexDirection: 'row',
+
   },
   modalTitle:{
     marginLeft:20,
@@ -151,7 +146,7 @@ const styles = StyleSheet.create({
     height:'20%',
     justifyContent:'center',
     alignItems:'center',
-    width:'90%'
+    width:'100%',
 
   },
   cuisineArea:{
@@ -159,23 +154,30 @@ const styles = StyleSheet.create({
     height:'20%',
     justifyContent:'center',
     alignItems:'center',
-    width:'90%'
+    width:'100%'
   },
   cookingAreaa:{
     marginTop:'5%',
     height:'20%',
     justifyContent:'center',
     alignItems:'center',
-    width:'90%'
+    width:'100%'
   },
   text:{
     fontWeight:'bold',
     fontSize:17,
-    marginBottom:10
+    marginBottom:10,
   },
   rightText:{
     color:'grey',
     fontSize:12,
+    marginRight:20,
+    marginBottom:10,
     fontWeight:'bold'
+  },
+  cuisineText:{
+    fontWeight:'bold',
+    fontSize:17,
+    marginBottom:10,
   }
 });

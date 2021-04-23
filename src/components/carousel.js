@@ -52,7 +52,7 @@ export default class App extends React.Component {
               marginLeft: 30,
               justifyContent:'flex-end'
              }}>
-            <Text style={{fontSize: 30,}}>{item.title}</Text>
+            <Text style={{fontSize: 30,color:'white'}}>{item.title}</Text>
             <Text>{item.text}</Text>
           </View>
           </TouchableOpacity>

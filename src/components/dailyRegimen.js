@@ -22,7 +22,7 @@ export default class favorite extends Component {
         onPress={this.updateIndex}
         selectedIndex={selectedIndex}
         buttons={['Breakfast','Lunch','Snack','Dinner']}
-        containerStyle={{height:50,width:'100%',justifyContent:'center',alignItems:'center',backgroundColor:'transparent',borderWidth:0,margin:30}} 
+        containerStyle={{height:50,width:'100%',justifyContent:'center',alignItems:'center',backgroundColor:'transparent',borderWidth:0}} 
         buttonStyle={{width:80,backgroundColor:'white',borderRadius:15,elevation:5,marginBottom:10,}}
         innerBorderStyle={{width: 0}}
         textStyle={{color:'black'}}
