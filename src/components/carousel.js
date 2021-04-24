@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
     _renderItem({item,index}){
         return (
-          <TouchableOpacity onPress={()=> navigate('DetailScreen',{
+          <TouchableOpacity activeOpacity={0.8} hitSlop={{top: 15, right: 15, bottom: 15, left: 15}} onPress={()=> navigate('DetailScreen',{
             title:item.title,
           })}>
           <View style={{

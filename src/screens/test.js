@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
 const items = [
@@ -36,7 +36,7 @@ const items = [
       },
     ],
   },
- 
+
 
 ];
 
@@ -56,6 +56,8 @@ export default class App extends Component {
       <View>
         <SectionedMultiSelect
           items={items}
+          headerComponent={null}
+          colors={{searchSelectionColor:'red',itemBackground:'red'}}
           IconRenderer={Icon}
           uniqueKey="id"
           subKey="children"

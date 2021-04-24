@@ -5,7 +5,7 @@ import { navigate } from '../../navigation/rootNavigation';
 const Detail = ({navigation}) => {
   return (
     <View style={styles.area}>
-    <TouchableOpacity onPress={()=> navigate('Home')}>
+    <TouchableOpacity onPress={()=> navigate('Router')}>
 
       <Icon name="chevron-left" size={20} color="white"/>
     </TouchableOpacity>
