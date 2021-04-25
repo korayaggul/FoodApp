@@ -2,7 +2,6 @@ import Serving from './serving';
 import TextComp from './text';
 import CookingTime from './cookingTime';
 import ProgressBar from './progressBar';
-import MultiSelect from './mutliSelect';
-import LabelSelect from './labelSelect';
+import Button from './button'
 
-export {Serving,TextComp,CookingTime,ProgressBar,MultiSelect,LabelSelect}
+export {Serving,TextComp,CookingTime,ProgressBar,Button}

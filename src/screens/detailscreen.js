@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Modal,ScrollView} from 'react-native';
 import {DetailHeader} from '../components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Serving, ProgressBar, MultiSelect} from '../components/detail';
+import {Serving, ProgressBar, Button} from '../components/detail';
 import {SelectedButton} from '../components/modal';
 const Detail = ({navigation, route}) => {
   const [modal, setModal] = useState(false);
@@ -18,8 +18,15 @@ const Detail = ({navigation, route}) => {
   const carbsNumber = valueCarbs / 1.08;
   const proteinNumber = valueProtein * 1.36;
 
-  const onAction = selectedValue => {
-    console.log('detailScreen__selectedValue', selectedValue);
+  const OnAction = ({selectedValue}) => {
+    console.log('sa',selectedValue)
+    return(
+      <View>
+      <Text>{selectedValue}</Text> 
+     
+      </View>
+      
+    )
   };
 
   const title = route?.params?.title || null;
@@ -45,11 +52,18 @@ const Detail = ({navigation, route}) => {
               onRequestClose={() => {
                 setModal(!modal);
               }}>
-              <SelectedButton action={onAction} setModal={setModal} />
+              <SelectedButton action={OnAction} setModal={setModal} />
             </Modal>
-            <TouchableOpacity onPress={() => setModal(true)}>
-              <Text>Modal</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+            <Button title="Beef"/>
+            <Button title="Cheese"/>
+            <Button title="Vegetables"/>
+          
+            <OnAction/>
+            <TouchableOpacity style={styles.modalOpenButton} onPress={() => setModal(true)}>
+              <Icon name="chevron-down" size={25} color="white"/>
             </TouchableOpacity>
+            </ScrollView>
           </View>
           <View style={styles.servingArea}>
             <Serving setCount={setCount} count={count} />
@@ -117,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
   },
   topArea: {
-    flex: 1,
+    flex: 1.3,
     backgroundColor: 'red',
   },
   bottomArea: {
@@ -140,6 +154,8 @@ const styles = StyleSheet.create({
   },
   buttonArea: {
     flex: 1,
+    flexDirection:'row',
+    alignItems:'center'
   },
   servingArea: {
     flex: 1,
@@ -197,4 +213,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 17,
   },
+  modalOpenButton:{
+    backgroundColor: '#2dc268',
+    paddingLeft:7,
+    paddingRight:7,
+    height:30,
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:5,
+    top:5
+  }
 });
