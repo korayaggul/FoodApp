@@ -2,8 +2,10 @@ import * as React from 'react';
 import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import {navigate} from '../../navigation/rootNavigation';
 import Carousel from 'react-native-snap-carousel';
+import {useDispatch, useSelector} from 'react-redux';
 
 export default class App extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {

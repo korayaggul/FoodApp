@@ -3,9 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SafeAreaView} from 'react-native';
 import {Home, Favorite, ShopList,Profile,Pantry} from '../screens';
-
+import { useDispatch, useSelector } from 'react-redux';
 const Tab = createBottomTabNavigator();
-
 const Router = () => {
   return (
     <SafeAreaView style={{flex: 1}}>

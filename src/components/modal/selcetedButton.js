@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import TagSelector from 'react-native-tag-selector';
 import {useNavigation} from '@react-navigation/native';
-import color from 'color';
 
 const Selected = ({action, setModal, props}) => {
   const navigation = useNavigation();
