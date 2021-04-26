@@ -10,29 +10,28 @@ import {
 import {DetailHeader} from '../components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Serving, ProgressBar, Button} from '../components/detail';
-import {SelectedButton} from '../components/modal';
+import {SelectedButton, Deneme} from '../components/modal';
 const Detail = ({navigation, route}) => {
   const [modal, setModal] = useState(false);
 
   const [count, setCount] = useState(1);
-  const [valueProtein, setValue] = useState(24);
-  const [valueOil, setOil] = useState(3.5);
-  const [valueCalorie, setCalorie] = useState(293);
-  const [valueCarbs, setCarbs] = useState(40);
+  const valueProtein = 24.5;
+  const valueOil = 3.5;
+  const valueCalorie = 293.5;
+  const valueCarbs = 40;
 
   const oilNumber = valueOil * 6;
   const calorieNumber = valueCalorie / 10.5;
   const carbsNumber = valueCarbs / 1.08;
   const proteinNumber = valueProtein * 1.36;
 
-  const Action = selectedValue => {
-    console.log('detailScreen__selectedValue', selectedValue);
-    return (
-      <View style={{flexDirection:'row'}}>
-      </View>
-    )
+  const onAction = selectedValue => {
+    console.log('selectedValue', selectedValue);
   };
+
   const title = route?.params?.title || null;
+  const selected = route?.params?.selected || null;
+  console.log('selected', selected);
   return (
     <View style={styles.main}>
       <View style={styles.topArea}>
@@ -55,18 +54,32 @@ const Detail = ({navigation, route}) => {
               onRequestClose={() => {
                 setModal(!modal);
               }}>
-              <SelectedButton action={Action} setModal={setModal} />
+              <SelectedButton setModal={setModal} action={onAction} />
             </Modal>
+            <TouchableOpacity
+              style={styles.modalOpenButton}
+              onPress={() => setModal(true)}>
+              <Icon name="chevron-down" size={25} color="white" />
+            </TouchableOpacity>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <Button title="Beef" />
               <Button title="Cheese" />
               <Button title="Vegetables" />
-              <Action/>
-              <TouchableOpacity
-                style={styles.modalOpenButton}
-                onPress={() => setModal(true)}>
-                <Icon name="chevron-down" size={25} color="white" />
-              </TouchableOpacity>
+              <View style={{flexDirection: 'row'}}>
+                {selected?.length > 0 ? (
+                  selected.map((item, index) => {
+                    return (
+                      <View key={index}>
+                        <Button title={item} />
+                      </View>
+                    );
+                  })
+                ) : (
+                  <View>
+                    <Text>sasa</Text>
+                  </View>
+                )}
+              </View>
             </ScrollView>
           </View>
           <View style={styles.servingArea}>
@@ -227,6 +240,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    top: 5,
   },
 });

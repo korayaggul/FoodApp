@@ -1,71 +1,48 @@
-import React, {cloneElement, useState} from 'react';
+import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-const Selected = ({action, setModal}) => {
-  const [contents, setContents] = useState([]);
-  const [selected, setSelected] = useState(null);
+import TagSelector from 'react-native-tag-selector';
+import {useNavigation} from '@react-navigation/native';
+import color from 'color';
 
-  const array = [{name: 'Onion'}, {name: 'Pickle'}, {name: 'Mayonnaise'}];
+const Selected = ({action, setModal, props}) => {
+  const navigation = useNavigation();
+  const [selected, setSelected] = useState([]);
 
-  const onAction = content => {
-    setSelected(content);
-
-    const filterContent = contents?.filter(
-      filter => filter.name === content.name,
-    );
-    if (filterContent?.length === 0) {
-      contents.push(content);
-      setContents(contents);
-    } else {
-      const removeContent = contents?.filter(
-        filter => filter.name !== content.name,
-      );
-      setContents(removeContent);
-    }
-  };
-
-  const SelectedView = () => {
-    return array.map((item, index) => {
-      const filterContent = contents?.filter(
-        filter => filter.name === item.name,
-      );
-
-      let selectedContent = {
-        fontWeight: '100',
-      };
-      if (filterContent?.length > 0) {
-        selectedContent = {
-          fontWeight: 'bold',
-          color: '#2dc268',
-          textDecorationLine: 'underline',
-        };
-      }
-      return (
-        <TouchableOpacity
-          style={styles.dropdown}
-          key={index}
-          onPress={() => onAction(item)}>
-          <Text style={selectedContent}>{item.name}</Text>
-        </TouchableOpacity>
-      );
-    });
-  };
+  const tags = [
+    {
+      id: 'Onion',
+      name: 'Onion',
+    },
+    {
+      id: 'Pickle',
+      name: 'Pickle',
+    },
+    {
+      id: 'Mayonnaise',
+      name: 'Mayonnaise',
+    },
+  ];
 
   return (
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
-        <SelectedView />
-
-        <View
-          style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              setModal(false);
-              action(contents);
-            }}>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>Gönder</Text>
-          </TouchableOpacity>
-        </View>
+        <TagSelector
+          containerStyle={styles.container}
+          tagStyle={styles.tag}
+          selectedTagStyle={styles.selectedTag}
+          tags={tags}
+          onChange={selected => setSelected(selected)}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('DetailScreen', {
+              selected: selected,
+            });
+            setModal(false);
+          }}>
+          <Text>Gönder</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -96,11 +73,25 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '90%',
-    height: '20%',
+    height: '10%',
     borderRadius: 50,
     backgroundColor: '#2dc268',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
+  },
+  tag: {
+    color: 'grey',
+
+    margin: 10,
+  },
+  container: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    margin: 10,
+  },
+  selectedTag: {
+    color: '#2dc268',
+    margin: 10,
   },
 });

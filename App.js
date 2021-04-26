@@ -1,6 +1,6 @@
-import React, {Component,useEffect} from 'react';
-import {Text, View, StyleSheet,SafeAreaView} from 'react-native';
-import {  isMountedRef } from './navigation/rootNavigation';
+import React, {Component, useEffect} from 'react';
+import {Text, View, StyleSheet, SafeAreaView} from 'react-native';
+import {isMountedRef} from './navigation/rootNavigation';
 
 import {Stack} from './src/router';
 const App = ({navigation}) => {
@@ -10,13 +10,10 @@ const App = ({navigation}) => {
     return () => (isMountedRef.current = false);
   }, []);
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex: 1}}>
       <Stack />
-
     </SafeAreaView>
   );
 };
 export default App;
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});

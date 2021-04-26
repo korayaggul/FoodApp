@@ -1,10 +1,12 @@
 import React, {Component,useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Pantry = ({navigation}) => {
+const Pantry = ({navigation,route}) => {
+  const selected = route?.params?.selected || null;
+
   return (
     <View>
-      <Text>Pantry</Text>
+      <Text>{selected}</Text>
     </View>
   );
 };

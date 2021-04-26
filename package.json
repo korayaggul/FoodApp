@@ -32,6 +32,8 @@
     "react-native-selectmultiple-button": "^0.1.105",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^12.1.1",
+    "react-native-tag-select": "^2.0.0",
+    "react-native-tag-selector": "^0.0.3",
     "react-native-vector-icons": "^8.1.0"
   },
   "devDependencies": {
