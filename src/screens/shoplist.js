@@ -1,12 +1,12 @@
 import React, {Component,useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Favorite = ({navigation}) => {
+const ShopList = ({navigation}) => {
   return (
     <View>
-      <Text>Favorite</Text>
+      <Text>Shoplist</Text>
     </View>
   );
 };
-export default Favorite;
+export default ShopList;
 const styles = StyleSheet.create({});

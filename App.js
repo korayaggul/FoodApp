@@ -2,7 +2,7 @@ import React, {Component,useEffect} from 'react';
 import {Text, View, StyleSheet,SafeAreaView} from 'react-native';
 import {  isMountedRef } from './navigation/rootNavigation';
 
-import Router from './src/router/Router';
+import {Stack} from './src/router';
 const App = ({navigation}) => {
   useEffect(() => {
     isMountedRef.current = true;
@@ -11,7 +11,7 @@ const App = ({navigation}) => {
   }, []);
   return (
     <SafeAreaView style={{flex:1}}>
-      <Router />
+      <Stack />
 
     </SafeAreaView>
   );

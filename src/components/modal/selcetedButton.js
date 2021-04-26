@@ -1,6 +1,6 @@
 import React, {cloneElement, useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-const Selected = ({action,setModal}) => {
+const Selected = ({action, setModal}) => {
   const [contents, setContents] = useState([]);
   const [selected, setSelected] = useState(null);
 
@@ -35,11 +35,10 @@ const Selected = ({action,setModal}) => {
       if (filterContent?.length > 0) {
         selectedContent = {
           fontWeight: 'bold',
-          color:'green',
+          color: '#2dc268',
           textDecorationLine: 'underline',
         };
       }
-
       return (
         <TouchableOpacity
           style={styles.dropdown}
@@ -51,23 +50,22 @@ const Selected = ({action,setModal}) => {
     });
   };
 
-  console.log('contents', contents);
-
   return (
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
         <SelectedView />
 
-<View style={{flex:1,justifyContent:'flex-end',alignItems:'center'}}>
-
-        <TouchableOpacity  style={styles.button} onPress={() => {
-           setModal(false);
-           action(contents)
-        }}>
-          <Text style={{color:'white',fontWeight:'bold'}}>Gönder</Text>
-        </TouchableOpacity>
-</View>
-
+        <View
+          style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              setModal(false);
+              action(contents);
+            }}>
+            <Text style={{color: 'white', fontWeight: 'bold'}}>Gönder</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -93,16 +91,16 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 8,
     flexDirection: 'row',
-    justifyContent:'center',
-    marginTop:5
+    justifyContent: 'center',
+    marginTop: 5,
   },
-  button:{
+  button: {
     width: '90%',
     height: '20%',
     borderRadius: 50,
     backgroundColor: '#2dc268',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:20
-  }
+    marginBottom: 20,
+  },
 });
