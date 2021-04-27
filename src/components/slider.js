@@ -1,10 +1,15 @@
 import React, {Component, useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import { useSelector} from 'react-redux';
+import styled from "styled-components";
 
 const Slider = ({navigation}) => {
   const [multiSliderValue, setMultiSliderValue] = useState([30, 600]);
   const multiSliderValuesChange = values => setMultiSliderValue(values);
+  const Main = useSelector(x=> x.color.Main)
+
+
   return (
     <View style={{flex: 1, marginTop: '10%'}}>
       <View style={{flex: 1, flexDirection: 'row'}}>
@@ -18,11 +23,11 @@ const Slider = ({navigation}) => {
             alignItems: 'center',
           }}>
           <View style={styles.textArea}>
-            <Text style={styles.text}>{multiSliderValue[0]}</Text>
+            <Text style={[styles.sliderText,{color:Main}]}>{multiSliderValue[0]}</Text>
           </View>
           <Text>to</Text>
           <View style={styles.textArea}>
-            <Text style={styles.text}>{multiSliderValue[1]}</Text>
+            <Text style={[styles.sliderText,{color:Main}]}>{multiSliderValue[1]}</Text>
           </View>
         </View>
       </View>
@@ -30,12 +35,12 @@ const Slider = ({navigation}) => {
         <MultiSlider
           min={30}
           max={600}
-          selectedStyle={{backgroundColor: '#2dc268', height: 5}}
+          selectedStyle={{backgroundColor: Main, height: 5}}
           trackStyle={{backgroundColor: '#e8e8e8', height: 3}}
           markerStyle={{
             borderRadius: 20,
             borderWidth: 5,
-            borderColor: '#2dc268',
+            borderColor: Main,
             backgroundColor: 'white',
             width: 30,
             height: 30,
@@ -80,4 +85,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 10,
   },
+  sliderText:{
+    fontSize:25,
+    fontWeight:'bold',
+  }
 });

@@ -2,12 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Modal} from 'react-native';
 import {Carousel, SearchBar, FlatList} from '../components';
 import {Filter} from '../components/modal';
-
 import Icon from 'react-native-vector-icons/Feather';
-
+import EStyleSheet from 'react-native-extended-stylesheet';
+import {useDispatch, useSelector} from 'react-redux';
 const Home = ({navigation}) => {
   const [modalFilter, setModalFilter] = useState(false);
   const FilterIcon = <Icon name="sliders" size={20} color="white" />;
+
+  const Main = useSelector(x=> x.color.Main)
+ 
+ 
   return (
     <View style={styles.container}>
       <View style={styles.searchArea}>
@@ -30,8 +34,9 @@ const Home = ({navigation}) => {
         <View style={styles.flatListArea}>
           <View style={{right: '10%'}}>
             <TouchableOpacity
+              style={styles.modalButton}
               onPress={() => setModalFilter(true)}
-              style={styles.modalButton}>
+              >
               {FilterIcon}
             </TouchableOpacity>
           </View>
@@ -41,11 +46,21 @@ const Home = ({navigation}) => {
     </View>
   );
 };
+
+
 export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#efefef',
+    backgroundColor: 'white',
+  },
+  modalButton:{
+    width: 50,
+    height: 50,
+    justifyContent:'center',
+    borderRadius:16,
+    alignItems:'center',
+    backgroundColor:'green',
   },
   searchArea: {
     flex: 1,
@@ -65,14 +80,7 @@ const styles = StyleSheet.create({
     marginLeft: '15%',
     flexDirection: 'row',
   },
-  modalButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2dc268',
-  },
+  
   modalText: {
     fontSize: 15,
     color: 'white',

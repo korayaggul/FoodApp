@@ -1,6 +1,16 @@
-import React, { useState } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, Modal } from 'react-native';
+import React, {useState} from 'react';
+import {
+  SafeAreaView,
+  View,
+  FlatList,
+  StyleSheet,
+  Text,
+  StatusBar,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import {navigate} from '../../navigation/rootNavigation';
+import {Style} from '../theme'
 
 const DATA = [
   {
@@ -25,36 +35,23 @@ const DATA = [
   },
 ];
 const FlatListComp = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+
   
-
-
-
-  const Item = ({ title }) => (
-    <View style={{paddingLeft:8,justifyContent:'center',alignItems:'center'}}>
-
-    <TouchableOpacity style={styles.item} >
-
-      <Text style={styles.title}>{title}</Text>
-    </TouchableOpacity>
+  const Item = ({title}) => (
+    <View
+      style={{paddingLeft: 8, justifyContent: 'center', alignItems: 'center'}}>
+      <TouchableOpacity style={[Style.color, styles.button]}>
+        <Text style={styles.title}>{title}</Text>
+      </TouchableOpacity>
     </View>
   );
 
-
-
-
-  const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
-
-
-
+  const renderItem = ({item}) => <Item title={item.title} />;
 
   return (
     <View style={{}}>
-     
       <FlatList
-      showsHorizontalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
         horizontal={true}
         data={DATA}
         renderItem={renderItem}
@@ -62,23 +59,20 @@ const FlatListComp = () => {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-
-  item: {
-    backgroundColor: '#2dc268',
-    borderRadius: 16,
-    width: 100,
-    height:50,
-    justifyContent:'center',
-    alignItems:'center'
-    
-  },
   title: {
     fontSize: 15,
-    color:'white'
+    color: 'white',
   },
+  button:{
+    width: 100,
+    height: 50,
+    justifyContent:'center',
+    borderRadius:16,
+    alignItems:'center',
+  }
 });
 
 export default FlatListComp;

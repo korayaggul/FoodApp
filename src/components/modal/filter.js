@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState,useEffect} from 'react';
 import {
   Text,
   View,
@@ -8,7 +8,111 @@ import {
   Modal,
 } from 'react-native';
 import {CookingTime, DailyRegimen, Slider, Cuisine} from '../';
+import {useDispatch, useSelector} from 'react-redux';
+import styled from 'styled-components';
 const Filter = ({setModalFilter}) => {
+  useEffect(() => {
+   
+  }, [])
+
+  const Main = useSelector(x => x.color.Main);
+ console.log('styles',styles);
+  const styles = StyleSheet.create({
+    centeredView: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    },
+    GoText:{
+      color:Main,
+      paddingRight:7,
+      marginLeft:20,
+      fontSize:25,
+      fontWeight:'bold'
+    },
+    modalView: {
+      width: '100%',
+      height: '80%',
+      backgroundColor: 'white',
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+      shadowRadius: 4,
+      elevation: 20,
+    },
+    modalTitleArea: {
+      width: '100%',
+      height: '10%',
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+      backgroundColor: '#ededed',
+      flexDirection: 'row',
+    },
+    modalTitle: {
+      marginLeft: 20,
+      fontSize: 25,
+      color: '#474747',
+      fontWeight: 'bold',
+    },
+    resetText: {
+      marginLeft: 20,
+      fontSize: 15,
+      color: '#bcbcbc',
+      fontWeight: 'bold',
+    },
+    titleLeft: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    titleRight: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      flexDirection: 'row',
+      marginRight: 20,
+    },
+    container: {
+      flex: 1,
+    },
+    cookingArea: {
+      marginTop: '5%',
+      height: '20%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+    },
+    cuisineArea: {
+      marginTop: '5%',
+      height: '20%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+    },
+    cookingAreaa: {
+      marginTop: '5%',
+      height: '20%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+    },
+    text: {
+      fontWeight: 'bold',
+      fontSize: 17,
+      marginBottom: 10,
+    },
+    rightText: {
+      color: 'grey',
+      fontSize: 12,
+      marginRight: 20,
+      marginBottom: 10,
+      fontWeight: 'bold',
+    },
+    cuisineText: {
+      fontWeight: 'bold',
+      fontSize: 17,
+      marginBottom: 10,
+    },
+  });
+  
   return (
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
@@ -22,7 +126,7 @@ const Filter = ({setModalFilter}) => {
                 <Text style={[styles.resetText]}>Reset</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setModalFilter(false)}>
-                <Text style={[styles.goText]}>Go!</Text>
+                <Text style={styles.GoText}>Go!</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -77,98 +181,3 @@ const Filter = ({setModalFilter}) => {
   );
 };
 export default Filter;
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-  },
-
-  modalView: {
-    width: '100%',
-    height: '80%',
-    backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    shadowRadius: 4,
-    elevation: 20,
-  },
-  modalTitleArea: {
-    width: '100%',
-    height: '10%',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: '#ededed',
-    flexDirection: 'row',
-  },
-  modalTitle: {
-    marginLeft: 20,
-    fontSize: 25,
-    color: '#474747',
-    fontWeight: 'bold',
-  },
-  resetText: {
-    marginLeft: 20,
-    fontSize: 15,
-    color: '#bcbcbc',
-    fontWeight: 'bold',
-  },
-  goText: {
-    marginLeft: 20,
-    fontSize: 25,
-    color: '#2dc268',
-    fontWeight: 'bold',
-  },
-  titleLeft: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  titleRight: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginRight: 20,
-  },
-  container: {
-    flex: 1,
-  },
-  cookingArea: {
-    marginTop: '5%',
-    height: '20%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  cuisineArea: {
-    marginTop: '5%',
-    height: '20%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  cookingAreaa: {
-    marginTop: '5%',
-    height: '20%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  text: {
-    fontWeight: 'bold',
-    fontSize: 17,
-    marginBottom: 10,
-  },
-  rightText: {
-    color: 'grey',
-    fontSize: 12,
-    marginRight: 20,
-    marginBottom: 10,
-    fontWeight: 'bold',
-  },
-  cuisineText: {
-    fontWeight: 'bold',
-    fontSize: 17,
-    marginBottom: 10,
-  },
-});

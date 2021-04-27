@@ -1,19 +1,25 @@
 import { createReducer, createActions } from "reduxsauce";
 import produce from "immer";
 
+
 const INITIAL_STATE = {
-  Main:'#2dc268',
-  Dark:'#186625',
+  
+  globalstyle:{
+   backgroundColor:'#2dc268',
+   width:300,
+   height:400,
+  },
+ 
 };
 
 const { Types, Creators } = createActions({
-  Color : ["payload"],
+  Style : ["payload"],
 });
 
 export const ActionTypes = Types;
 export const Actions = Creators;
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.COLOR]: produce((draft, { payload }) => ({ ...draft, ...payload })),
+  [Types.STYLE]: produce((draft, { payload }) => ({ ...draft, ...payload })),
 
 });

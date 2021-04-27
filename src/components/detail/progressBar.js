@@ -1,9 +1,16 @@
 import React, {Component, useEffect, useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import {TextComp} from '.';
+import styled from 'styled-components';
+import {useDispatch, useSelector} from 'react-redux';
 
 const OilBar = ({navigation, count, value, valueText, text, weight}) => {
+  const Main = useSelector(x => x.color.Main);
+  const TextStyle = styled.Text`
+    font-weight: bold;
+    font-size: 20px;
+    color: ${Main};
+  `;
   const impact = value * count;
   const impactText = valueText * count;
   return (
@@ -21,17 +28,17 @@ const OilBar = ({navigation, count, value, valueText, text, weight}) => {
         }}>
         <Text style={styles.text}>{text}</Text>
 
-        <Text style={styles.impactText}>
+        <TextStyle>
           {impactText}
           {weight || ''}
-        </Text>
+        </TextStyle>
       </View>
       <AnimatedCircularProgress
         size={80}
         width={40}
         backgroundWidth={0}
         fill={impact}
-        tintColor="#2dc268"
+        tintColor={Main}
         backgroundColor="white"
       />
     </View>

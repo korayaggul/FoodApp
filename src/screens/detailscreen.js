@@ -11,6 +11,8 @@ import {DetailHeader} from '../components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Serving, ProgressBar, Button} from '../components/detail';
 import {SelectedButton, Deneme} from '../components/modal';
+import {useDispatch, useSelector} from 'react-redux';
+
 const Detail = ({navigation, route}) => {
   const [modal, setModal] = useState(false);
 
@@ -25,16 +27,14 @@ const Detail = ({navigation, route}) => {
   const carbsNumber = valueCarbs / 1.08;
   const proteinNumber = valueProtein * 1.36;
 
-  const onAction = selectedValue => {
-    console.log('selectedValue', selectedValue);
-  };
-
   const title = route?.params?.title || null;
   const selected = route?.params?.selected || null;
-  console.log('selected', selected);
+  const Style = useSelector(x=> x.style.detailScreen)
+
+  const Main = useSelector(x => x.color.Main);
   return (
     <View style={styles.main}>
-      <View style={styles.topArea}>
+      <View style={[styles.topArea,{backgroundColor:Main}]}>
         <View style={{flex: 1, marginTop: 10}}>
           <DetailHeader />
         </View>
@@ -54,11 +54,9 @@ const Detail = ({navigation, route}) => {
               onRequestClose={() => {
                 setModal(!modal);
               }}>
-              <SelectedButton setModal={setModal} action={onAction} />
+              <SelectedButton setModal={setModal} />
             </Modal>
-            <TouchableOpacity
-              style={styles.modalOpenButton}
-              onPress={() => setModal(true)}>
+            <TouchableOpacity style={styles.modalButton} onPress={() => setModal(true)}>
               <Icon name="chevron-down" size={25} color="white" />
             </TouchableOpacity>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -75,9 +73,7 @@ const Detail = ({navigation, route}) => {
                     );
                   })
                 ) : (
-                  <View>
-                    <Text>sasa</Text>
-                  </View>
+                  <View></View>
                 )}
               </View>
             </ScrollView>
@@ -130,20 +126,19 @@ const Detail = ({navigation, route}) => {
       </View>
       <View style={styles.footerArea}>
         <TouchableOpacity
-          style={styles.footerButton}
+          style={styles.FooterButton}
           onPress={() => navigation.goBack()}>
           <View style={{right: 10}}>
             <Icon name="cart-outline" size={30} color="white" />
           </View>
-          <Text style={styles.footerButtonText}>
-            Add Missing Ingredients ({count})
-          </Text>
+          <Text style={{color:'white',fontWeight:'bold'}}>Add Missing Ingredients ({count})</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
+  
 };
-export default Detail;
+console.log('styles2',styles);
 const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -151,7 +146,15 @@ const styles = StyleSheet.create({
   },
   topArea: {
     flex: 1.3,
-    backgroundColor: 'red',
+  },
+  modalButton:{
+   height:30,
+   justifyContent:'center',
+   borderRadius:5,
+   alignItems:'center',
+   backgroundColor:'red',
+   paddingLeft:7,
+   paddingRight:7
   },
   bottomArea: {
     flex: 2,
@@ -160,6 +163,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 2,
+  },
+  FooterButton:{
+   width:'90%',
+   height:'60%',
+   justifyContent:'center',
+   borderRadius:50,
+   alignItems:'center',
+   backgroundColor:'red',
+   flexDirection:'row'
   },
   titleText: {
     marginLeft: 20,
@@ -218,27 +230,11 @@ const styles = StyleSheet.create({
     elevation: 24,
     shadowColor: '#000',
   },
-  footerButton: {
-    width: '90%',
-    height: '60%',
-    flexDirection: 'row',
-    borderRadius: 50,
-    backgroundColor: '#2dc268',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  
   footerButtonText: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 17,
   },
-  modalOpenButton: {
-    backgroundColor: '#2dc268',
-    paddingLeft: 7,
-    paddingRight: 7,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
 });
+export default Detail;

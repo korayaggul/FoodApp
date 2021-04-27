@@ -2,11 +2,23 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import TagSelector from 'react-native-tag-selector';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import styled from 'styled-components';
 
 const Selected = ({action, setModal, props}) => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState([]);
 
+  const Main = useSelector(x => x.color.Main);
+  const ButtonStyle = styled.TouchableOpacity`
+    width: 90%;
+    height: 10%;
+    justify-content: center;
+    border-radius: 50px;
+    align-items: center;
+    margin: 20px 0 0px 0;
+    background-color: ${Main};
+  `;
   const tags = [
     {
       id: 'Onion',
@@ -28,20 +40,19 @@ const Selected = ({action, setModal, props}) => {
         <TagSelector
           containerStyle={styles.container}
           tagStyle={styles.tag}
-          selectedTagStyle={styles.selectedTag}
+          selectedTagStyle={{color: Main, margin: 10}}
           tags={tags}
           onChange={selected => setSelected(selected)}
         />
-        <TouchableOpacity
-          style={styles.button}
+        <ButtonStyle
           onPress={() => {
             navigation.navigate('DetailScreen', {
               selected: selected,
             });
             setModal(false);
           }}>
-          <Text>Gönder</Text>
-        </TouchableOpacity>
+          <Text style={{color: 'white'}}>Gönder</Text>
+        </ButtonStyle>
       </View>
     </View>
   );
@@ -57,6 +68,7 @@ const styles = StyleSheet.create({
   modalView: {
     width: '100%',
     height: '50%',
+    alignItems: 'center',
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -71,10 +83,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   button: {
-    width: '90%',
-    height: '10%',
-    borderRadius: 50,
-    backgroundColor: '#2dc268',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,

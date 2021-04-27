@@ -4,13 +4,18 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SafeAreaView} from 'react-native';
 import {Home, Favorite, ShopList,Profile,Pantry} from '../screens';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from "styled-components";
+
 const Tab = createBottomTabNavigator();
 const Router = () => {
+  const Main = useSelector(x=> x.color.Main)
+
+  
   return (
     <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
           tabBarOptions={{
-            activeTintColor: '#2dc268',
+            activeTintColor: Main,
             inactiveTintColor: '#B9BDC7',
           }}>
           <Tab.Screen
