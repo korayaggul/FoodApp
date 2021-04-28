@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 const OilBar = ({navigation, count, value, valueText, text, weight}) => {
   const Main = useSelector(x => x.color.Main);
   const TextColor = useSelector(x => x.style.textColor);
+  const TintColor = useSelector(x => x.style.activeTintColor);
 
   const impact = value * count;
   const impactText = valueText * count;
@@ -35,7 +36,7 @@ const OilBar = ({navigation, count, value, valueText, text, weight}) => {
         width={40}
         backgroundWidth={0}
         fill={impact}
-        tintColor={Main}
+        tintColor={TintColor}
         backgroundColor="white"
       />
     </View>

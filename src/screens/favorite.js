@@ -6,7 +6,7 @@ import {Actions as themeActions} from '../../redux/theme/reducers';
 
 const Favorite = ({navigation}) => {
   const dispatch = useDispatch();
-   
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <TouchableOpacity
@@ -18,7 +18,28 @@ const Favorite = ({navigation}) => {
           alignItems: 'center',
         }}
         onPress={() => {
-          dispatch(themeActions.Style.globalstyle({backgroundColor:'red'}));
+          dispatch(
+            themeActions.SetStyle({
+              iconColor: 'red',
+              borderColor: 'red',
+              activeTintColor: 'red',
+              globalstyle: {
+                backgroundColor: 'red',
+                width: 300,
+                height: 400,
+              },
+              Container: {
+                flex: 1,
+                backgroundColor: '#f1f1f1',
+              },
+              Color: {
+                backgroundColor: 'red',
+              },
+              textColor: {
+                color: 'red',
+              },
+            }),
+          );
         }}>
         <Text style={{color: 'white'}}>Kırmızı</Text>
       </TouchableOpacity>
@@ -31,7 +52,28 @@ const Favorite = ({navigation}) => {
           alignItems: 'center',
         }}
         onPress={() => {
-          dispatch(themeActions.Style({backgroundColor:'blue'}));
+          dispatch(
+            themeActions.SetStyle({
+              iconColor: '#2dc268',
+              borderColor: '#2dc268',
+              activeTintColor: '#2dc268',
+              globalstyle: {
+                backgroundColor: '#2dc268',
+                width: 300,
+                height: 400,
+              },
+              Container: {
+                flex: 1,
+                backgroundColor: '#f1f1f1',
+              },
+              Color: {
+                backgroundColor: '#2dc268',
+              },
+              textColor: {
+                color: '#2dc268',
+              },
+            }),
+          );
         }}>
         <Text style={{color: 'white'}}>Yeşil</Text>
       </TouchableOpacity>

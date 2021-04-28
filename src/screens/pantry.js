@@ -6,7 +6,6 @@ const ButtonGroup = ({buttons, doSomethigAfterClick}) => {
   const onAction = (event, id, i) => {
     setClickedId(id);
     doSomethigAfterClick(event);
-    console.log('id', id);
   };
   return (
     <>
@@ -24,8 +23,10 @@ const ButtonGroup = ({buttons, doSomethigAfterClick}) => {
     </>
   );
 };
-const Pantry = ({navigation}) => {
-  const printButtonLabel = event => {};
+const Pantry = (event) => {
+  const printButtonLabel = (buttonLabel) => {
+ 
+  };
   return (
     <View>
       <ButtonGroup
