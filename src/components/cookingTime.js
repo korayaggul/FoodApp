@@ -2,10 +2,8 @@ import React, {Component, useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {ButtonGroup} from 'react-native-elements';
 import {useSelector} from 'react-redux';
-const CookingTime = () => {
-  const [selectedIndex, setSelectedIndex] = useState(2);
-  const Main = useSelector(x => x.color.Main);
-
+const CookingTime = ({selectedIndex,setSelectedIndex}) => {
+  const Color = useSelector(x => x.style.Color);
   return (
     <ButtonGroup
       onPress={a => setSelectedIndex(a)}
@@ -29,7 +27,7 @@ const CookingTime = () => {
       }}
       innerBorderStyle={{width: 0}}
       textStyle={{color: 'black'}}
-      selectedButtonStyle={{backgroundColor: Main}}
+      selectedButtonStyle={Color}
     />
   );
 };

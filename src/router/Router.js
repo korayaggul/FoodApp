@@ -8,14 +8,14 @@ import styled from "styled-components";
 
 const Tab = createBottomTabNavigator();
 const Router = () => {
-  const Main = useSelector(x=> x.color.Main)
+  const Color = useSelector(x=> x.style.activeTintColor)
 
   
   return (
     <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
           tabBarOptions={{
-            activeTintColor: Main,
+            activeTintColor: Color,
             inactiveTintColor: '#B9BDC7',
           }}>
           <Tab.Screen

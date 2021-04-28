@@ -29,7 +29,7 @@ const carouselItems = [
 ];
 
 const CarouselScreen = () => {
-  const Main = useSelector(x=> x.color.Main)
+  const Color = useSelector(x=> x.style.Color)
 
   const carouselRef = useRef(null);
   const renderItem = ({item, index}) => {
@@ -42,7 +42,7 @@ const CarouselScreen = () => {
             title: item.title,
           })
         }>
-        <View style={[styles.CarouselView,{backgroundColor:Main}]}>
+        <View style={[styles.CarouselView,Color]}>
          
           <Text style={{fontSize: 30, color: 'white'}}>{item.title}</Text>
           <Text>{item.text}</Text>

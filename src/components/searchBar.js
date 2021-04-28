@@ -5,14 +5,14 @@ import styled from "styled-components";
 import {useDispatch, useSelector} from 'react-redux';
 
 const SearchBar = ({navigation}) => {
-  const Main = useSelector(x=> x.color.Main)
+  const Color = useSelector(x=> x.style.iconColor)
  
   
   return (
     <View style={styles.searchBarArea}>
       <View style={styles.searchBar}>
         <View style={styles.icon}>
-          <Icon name="search" size={20} color={Main} />
+          <Icon name="search" size={20} color={Color} />
         </View>
         <TextInput placeholder="Search recipes..." />
       </View>

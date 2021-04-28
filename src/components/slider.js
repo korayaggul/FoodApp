@@ -7,7 +7,9 @@ import styled from "styled-components";
 const Slider = ({navigation}) => {
   const [multiSliderValue, setMultiSliderValue] = useState([30, 600]);
   const multiSliderValuesChange = values => setMultiSliderValue(values);
-  const Main = useSelector(x=> x.color.Main)
+  const Color = useSelector(x => x.style.Color);
+  const Border = useSelector(x => x.style.borderColor);
+  const textColor = useSelector(x => x.style.textColor);
 
 
   return (
@@ -23,11 +25,11 @@ const Slider = ({navigation}) => {
             alignItems: 'center',
           }}>
           <View style={styles.textArea}>
-            <Text style={[styles.sliderText,{color:Main}]}>{multiSliderValue[0]}</Text>
+            <Text style={[styles.sliderText,textColor]}>{multiSliderValue[0]}</Text>
           </View>
           <Text>to</Text>
           <View style={styles.textArea}>
-            <Text style={[styles.sliderText,{color:Main}]}>{multiSliderValue[1]}</Text>
+            <Text style={[styles.sliderText,textColor]}>{multiSliderValue[1]}</Text>
           </View>
         </View>
       </View>
@@ -35,12 +37,13 @@ const Slider = ({navigation}) => {
         <MultiSlider
           min={30}
           max={600}
-          selectedStyle={{backgroundColor: Main, height: 5}}
+          step={5}
+          selectedStyle={[Color,{ height: 5}]}
           trackStyle={{backgroundColor: '#e8e8e8', height: 3}}
           markerStyle={{
             borderRadius: 20,
             borderWidth: 5,
-            borderColor: Main,
+            borderColor: Border,
             backgroundColor: 'white',
             width: 30,
             height: 30,
@@ -71,11 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     right: 10,
   },
-  text: {
-    color: '#2dc268',
-    fontSize: 25,
-    fontWeight: 'bold',
-  },
+
   textArea: {
     backgroundColor: '#e8e8e8',
     width: 60,
@@ -84,6 +83,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
+    
   },
   sliderText:{
     fontSize:25,

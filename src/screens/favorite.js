@@ -18,7 +18,7 @@ const Favorite = ({navigation}) => {
           alignItems: 'center',
         }}
         onPress={() => {
-          dispatch(themeActions.Style({globalstyle: 'red'}));
+          dispatch(themeActions.Style.globalstyle({backgroundColor:'red'}));
         }}>
         <Text style={{color: 'white'}}>Kırmızı</Text>
       </TouchableOpacity>
@@ -31,7 +31,7 @@ const Favorite = ({navigation}) => {
           alignItems: 'center',
         }}
         onPress={() => {
-          dispatch(themeActions.Style({globalstyle:'blue'}));
+          dispatch(themeActions.Style({backgroundColor:'blue'}));
         }}>
         <Text style={{color: 'white'}}>Yeşil</Text>
       </TouchableOpacity>

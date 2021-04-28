@@ -9,11 +9,12 @@ const Home = ({navigation}) => {
   const [modalFilter, setModalFilter] = useState(false);
   const FilterIcon = <Icon name="sliders" size={20} color="white" />;
 
-  const Main = useSelector(x=> x.color.Main)
+  const Container = useSelector(x=> x.style.Container)
+  const Color = useSelector(x=> x.style.Color)
  
  
   return (
-    <View style={styles.container}>
+    <View style={Container}>
       <View style={styles.searchArea}>
         <SearchBar />
       </View>
@@ -34,7 +35,7 @@ const Home = ({navigation}) => {
         <View style={styles.flatListArea}>
           <View style={{right: '10%'}}>
             <TouchableOpacity
-              style={styles.modalButton}
+              style={[styles.modalButton,Color]}
               onPress={() => setModalFilter(true)}
               >
               {FilterIcon}
@@ -50,17 +51,13 @@ const Home = ({navigation}) => {
 
 export default Home;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
+ 
   modalButton:{
     width: 50,
     height: 50,
     justifyContent:'center',
     borderRadius:16,
     alignItems:'center',
-    backgroundColor:'green',
   },
   searchArea: {
     flex: 1,

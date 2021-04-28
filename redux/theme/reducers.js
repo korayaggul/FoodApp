@@ -2,14 +2,27 @@ import { createReducer, createActions } from "reduxsauce";
 import produce from "immer";
 
 
+
 const INITIAL_STATE = {
-  
+  iconColor:'#2dc268',
+  borderColor:'#2dc268',
+  activeTintColor:'#2dc268',
   globalstyle:{
    backgroundColor:'#2dc268',
    width:300,
    height:400,
   },
- 
+  Container: {
+    flex: 1,
+    backgroundColor: '#f1f1f1',
+  },
+  Color:{
+    backgroundColor:'#2dc268'
+  },
+  textColor:{
+    color:'#2dc268'
+  },
+  
 };
 
 const { Types, Creators } = createActions({

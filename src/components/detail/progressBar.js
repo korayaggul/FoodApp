@@ -6,11 +6,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const OilBar = ({navigation, count, value, valueText, text, weight}) => {
   const Main = useSelector(x => x.color.Main);
-  const TextStyle = styled.Text`
-    font-weight: bold;
-    font-size: 20px;
-    color: ${Main};
-  `;
+  const TextColor = useSelector(x => x.style.textColor);
+
   const impact = value * count;
   const impactText = valueText * count;
   return (
@@ -28,10 +25,10 @@ const OilBar = ({navigation, count, value, valueText, text, weight}) => {
         }}>
         <Text style={styles.text}>{text}</Text>
 
-        <TextStyle>
+        <Text style={[styles.impactText,TextColor]}>
           {impactText}
           {weight || ''}
-        </TextStyle>
+        </Text>
       </View>
       <AnimatedCircularProgress
         size={80}
@@ -52,7 +49,6 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   impactText: {
-    color: '#38c56d',
     fontWeight: 'bold',
     fontSize: 20,
   },

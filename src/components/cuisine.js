@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 const Cuisine = () => {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const Main = useSelector(x => x.color.Main);
+  const Color = useSelector(x => x.style.Color);
 
   return (
     <View style={{width: '100%', height: 100}}>
@@ -40,7 +41,7 @@ const Cuisine = () => {
           innerBorderStyle={{width: 0}}
           textStyle={{color: 'black'}}
           selectedTextStyle={styles.selectedText}
-          selectedButtonStyle={{backgroundColor: Main}}
+          selectedButtonStyle={Color}
         />
       </ScrollView>
     </View>
@@ -61,9 +62,7 @@ const styles = StyleSheet.create({
     height: 20,
     backgroundColor: 'white',
   },
-  selectedButton: {
-    backgroundColor: '#2dc268',
-  },
+  
   text: {
     backgroundColor: 'white',
   },

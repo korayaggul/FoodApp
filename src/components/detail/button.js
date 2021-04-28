@@ -4,7 +4,9 @@ import styled from "styled-components";
 import {useDispatch, useSelector} from 'react-redux';
 
 const Button = ({navigation, title}) => {
-  const Main = useSelector(x=> x.color.Main)
+  const Main = useSelector(x=> x.color.Main);
+  const Color = useSelector(x=> x.style.Color);
+
   const ButtonStyle = styled.TouchableOpacity`
     height: 30px;
     justify-content:center;
@@ -13,19 +15,26 @@ const Button = ({navigation, title}) => {
     paddingLeft: 10px;
     paddingRight: 10px;
     margin:5px;
-    background-color: ${Main} ;
   `;
   return (
     <View>
-      <ButtonStyle >
+      <TouchableOpacity style={[styles.button,Color]} >
         <Text style={styles.text}>{title}</Text>
-      </ButtonStyle>
+      </TouchableOpacity>
     </View>
   );
 };
 export default Button;
 const styles = StyleSheet.create({
- 
+  button:{
+   height:30,
+   justifyContent:'center',
+   alignItems:'center',
+   borderRadius:5,
+   paddingLeft:10,
+   paddingRight:10,
+   margin:5
+  },
   text: {
     color: 'white',
   },

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {navigate} from '../../navigation/rootNavigation';
 import {Style} from '../theme'
+import {useDispatch, useSelector} from 'react-redux';
 
 const DATA = [
   {
@@ -35,12 +36,13 @@ const DATA = [
   },
 ];
 const FlatListComp = () => {
+  const Color = useSelector(x=> x.style.Color)
 
   
   const Item = ({title}) => (
     <View
       style={{paddingLeft: 8, justifyContent: 'center', alignItems: 'center'}}>
-      <TouchableOpacity style={[Style.color, styles.button]}>
+      <TouchableOpacity style={ [styles.button,Color]}>
         <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </View>

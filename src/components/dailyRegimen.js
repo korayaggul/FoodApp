@@ -4,8 +4,9 @@ import {ButtonGroup} from 'react-native-elements';
 import { useSelector} from 'react-redux';
 
 const DailyRegimen = () => {
-  const Main = useSelector(x => x.color.Main);
-  const [selectedIndex, setSelectedIndex] = useState(2);
+  const Color = useSelector(x => x.style.Color);
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
   
   return (
     <ButtonGroup
@@ -30,7 +31,7 @@ const DailyRegimen = () => {
       innerBorderStyle={{width: 0}}
       textStyle={{color: 'black'}}
       selectedTextStyle={styles.selectedText}
-      selectedButtonStyle={{backgroundColor: Main}}
+      selectedButtonStyle={Color}
     />
   );
 };

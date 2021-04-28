@@ -6,18 +6,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import styled from 'styled-components';
 
 const Selected = ({action, setModal, props}) => {
+
   const navigation = useNavigation();
   const [selected, setSelected] = useState([]);
+  const Color = useSelector(x=> x.style.Color);
 
   const Main = useSelector(x => x.color.Main);
   const ButtonStyle = styled.TouchableOpacity`
-    width: 90%;
-    height: 10%;
-    justify-content: center;
-    border-radius: 50px;
-    align-items: center;
-    margin: 20px 0 0px 0;
-    background-color: ${Main};
+   
   `;
   const tags = [
     {
@@ -44,7 +40,8 @@ const Selected = ({action, setModal, props}) => {
           tags={tags}
           onChange={selected => setSelected(selected)}
         />
-        <ButtonStyle
+        <TouchableOpacity
+         style={[styles.mainButton,Color]}
           onPress={() => {
             navigation.navigate('DetailScreen', {
               selected: selected,
@@ -52,7 +49,7 @@ const Selected = ({action, setModal, props}) => {
             setModal(false);
           }}>
           <Text style={{color: 'white'}}>Gönder</Text>
-        </ButtonStyle>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -60,6 +57,7 @@ const Selected = ({action, setModal, props}) => {
 export default Selected;
 
 const styles = StyleSheet.create({
+
   centeredView: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -101,4 +99,12 @@ const styles = StyleSheet.create({
     color: '#2dc268',
     margin: 10,
   },
+  mainButton:{
+    width: '90%',
+    height: '10%',
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+    margin: 20,
+  }
 });
